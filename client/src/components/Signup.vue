@@ -35,7 +35,8 @@ export default {
   methods: {
     signup: function () {
       let cek = this.valSignup()
-      let url = 'http://localhost:3000/users/signup'
+      // let url = 'http://localhost:3000/users/signup'
+      let url = 'https://35.198.200.183:443/users/signup'
 
       if (cek) {
         let newUser = {

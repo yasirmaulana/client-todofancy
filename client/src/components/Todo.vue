@@ -55,7 +55,8 @@ export default {
   },
   methods: {
     getTodo: function () {
-      let url = 'http://localhost:3000/users/showtodo'
+      // let url = 'http://localhost:3000/users/showtodo'
+      let url = 'https://35.198.200.183:443/users/showtodo'
 
       axios
         .get(url, {
@@ -72,7 +73,8 @@ export default {
         })
     },
     writePlan: function () {
-      let url = 'http://localhost:3000/users/inputtodo'
+      // let url = 'http://localhost:3000/users/inputtodo'
+      let url = 'https://35.198.200.183:443/users/inputtodo'
 
       let newTodo = {
         task: this.plan,
@@ -102,7 +104,8 @@ export default {
       // console.log('update')
       let id = event.srcElement.dataset.id
       // console.log(id)
-      let url = `http://localhost:3000/users/update/${id}`
+      // let url = `http://localhost:3000/users/update/${id}`
+      let url = `https://35.198.200.183:443/users/update/${id}`
       let newStatus = {
         completed: true
       }
@@ -129,7 +132,8 @@ export default {
     },
     deletePlan: function (event) {
       let id = event.srcElement.dataset.id
-      let url = `http://localhost:3000/users/delete/${id}`
+      // let url = `http://localhost:3000/users/delete/${id}`
+      let url = `https://35.198.200.183:443/users/delete/${id}`
       axios
         .delete(url, {
           headers: {
