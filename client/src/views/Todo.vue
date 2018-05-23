@@ -1,6 +1,7 @@
 <template>
   <div class="login">
     <Navbar></Navbar>
+    <JktWeather/>
     <Todo></Todo>
     <Footer></Footer>
   </div>
@@ -9,12 +10,14 @@
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 import Todo from '@/components/Todo.vue'
+import JktWeather from '@/components/weather.vue'
 
 export default {
   components: {
     Navbar,
     Todo,
-    Footer
+    Footer,
+    JktWeather
   },
   mounted () {
     let token = localStorage.getItem('token')
