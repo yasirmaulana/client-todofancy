@@ -36,7 +36,7 @@ export default {
     signup: function () {
       let cek = this.valSignup()
       // let url = 'http://localhost:3000/users/signup'
-      let url = 'https://35.198.200.183:443/users/signup'
+      let url = 'https://todoserver-yasirjs-com.herokuapp.com/users/signup'
 
       if (cek) {
         let newUser = {

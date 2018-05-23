@@ -33,7 +33,7 @@ export default {
     login () {
       let cek = this.valLogin()
       // let url = 'http://localhost:3000/users/signin'
-      let url = 'https://35.198.200.183:443/users/signin'
+      let url = 'https://todoserver-yasirjs-com.herokuapp.com/users/signin'
       
       if (cek) {
         axios
