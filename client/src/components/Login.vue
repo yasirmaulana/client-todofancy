@@ -11,8 +11,8 @@
         <input class="form-control" type="password" placeholder="input your password" v-model="password">
       </div>
       <p></p>
-      <button v-on:click.prevent="login">Log In</button>
-      <router-link to="/signup">Sign Up</router-link>
+      <button v-on:click.prevent="login">Sign In</button>
+      <!-- <router-link to="/signup">Sign Up</router-link> -->
     </div>
   </div>
 </template>
@@ -32,8 +32,8 @@ export default {
   methods: {
     login () {
       let cek = this.valLogin()
-      // let url = 'http://localhost:3000/users/signin'
-      let url = 'https://todoserver-yasirjs-com.herokuapp.com/users/signin'
+      let url = 'http://localhost:3000/users/signin'
+      // let url = 'https://todoserver-yasirjs-com.herokuapp.com/users/signin'
       
       if (cek) {
         axios

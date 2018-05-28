@@ -1,6 +1,6 @@
 <template>
   <div class="signup">
-    <h3 style="font: italic bold 30px/30px Georgia, serif">Sign Up here...</h3>
+    <h3 style="font: italic bold 30px/30px Georgia, serif">New here? Create an account!</h3>
       <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
         <input class="form-control" type="text" placeholder="input your email" v-model="email">
@@ -35,8 +35,8 @@ export default {
   methods: {
     signup: function () {
       let cek = this.valSignup()
-      // let url = 'http://localhost:3000/users/signup'
-      let url = 'https://todoserver-yasirjs-com.herokuapp.com/users/signup'
+      let url = 'http://localhost:3000/users/signup'
+      // let url = 'https://todoserver-yasirjs-com.herokuapp.com/users/signup'
 
       if (cek) {
         let newUser = {

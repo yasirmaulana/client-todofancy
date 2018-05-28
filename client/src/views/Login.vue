@@ -1,20 +1,13 @@
 <template>
-  <div class="container">
-    <Navbar></Navbar>
+  <div class="login">
+    <!-- <Navbar></Navbar> -->
     <Jumbotron></Jumbotron>
     <Login></Login>
-    <br/>Or<br/>
-    <div class="row">
-      <facebookLogin class="button"
-        appId="376922789471623"
-        @login="getUserData"
-        @logout="onLogout"
-        @get-initial-status="getUserData">
-      </facebookLogin>
-    </div>
+    <Signup />
+    <br/>or sign in using <img src="../assets/gIcon.png"> <img src="../assets/fbIcon.png">
     <!-- <button class="btn btn-primary navbar-btn" @click="login()">Login via Facebook</button><br> -->
-    <i style="color:blue">if login by facebook, please input your phone number in your profile</i>
-    <br/>
+    <!-- <i style="color:blue">if login by facebook, please input your phone number in your profile</i> -->
+    <br/><br/>
     <Footer></Footer>
   </div>
 </template>
@@ -27,6 +20,7 @@ import Jumbotron from '@/components/Jumbotron.vue'
 import facebookLogin from 'facebook-login-vuejs'
 import axios from 'axios'
 import swal from 'sweetalert'
+import Signup from '@/components/Signup.vue'
 
 export default {
   components: {
@@ -34,7 +28,8 @@ export default {
     Jumbotron,
     Footer,
     Login,
-    facebookLogin
+    facebookLogin,
+    Signup
   },
   methods: {
     getUserData: function () {

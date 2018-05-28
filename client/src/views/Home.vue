@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Navbar></Navbar>
+    <!-- <Navbar></Navbar> -->
     <h1>Plan... what will you do</h1>
     <p></p>
     <h1>Do... what has been planned</h1>
