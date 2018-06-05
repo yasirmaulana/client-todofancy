@@ -1,17 +1,30 @@
- import Vue from 'vue'
- import Vuex from 'vuex'
- import axios from 'axios'
+import Vue from 'vue'
+import Vuex from 'vuex'
+import axios from 'axios'
 
- Vue.use(Vuex)
+Vue.use(Vuex)
+
+const $http = 'http://localhost:3000/'
+// const $http = 'http://35.198.207.92:3000/'
 
 // export const store = new Vuex.Store({
 export default new Vuex.Store({
   state: {
-    JktWeather: []
+    JktWeather: [],
+    statusLogin: true,
+    statusLogout: false
   },
   mutations: {
     getWeather: function (state, payload) {
       state.JktWeather = payload
+    },
+    changeStLogin: function (state, payload) {
+      state.statusLogin = payload.login
+      state.statusLogout = payload.logout   
+    },
+    changeStLogout: function (state, payload) {
+      state.statusLogin = payload.login
+      state.statusLogout = payload.logout   
     }
   },
   actions: {
@@ -24,6 +37,23 @@ export default new Vuex.Store({
          let JktWeather = response
          commit('getWeather', JktWeather)
        })
-    }
+    },
+
+    changeStLogin ({commit}) {
+      let objStatus = {
+        login:false,
+        logout:true
+      }
+      commit('changeStLogin', objStatus) 
+    },
+
+    changeStLogout ({commit}) {
+      let objStatus = {
+        login:true,
+        logout:false
+      }
+      commit('changeStLogout', objStatus) 
+    },
+    
   }
 })

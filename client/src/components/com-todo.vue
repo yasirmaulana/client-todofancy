@@ -1,12 +1,8 @@
 <template>
     <div class="container">
         <div class="row">
-            <h1>What Should I Do...</h1>
-            <br>
-            <input type="text" placeholder="write your plan here..." style='width:40%' v-model="plan"><br><br>
-            <label>Deadline : </label>
-            <input type="date" placeholder="deadline" v-model="deadline">
-            <button v-on:click.prevent="writePlan">Set Plan</button>
+          <v-text-field v-model="plan" label="Write your plan here" required ></v-text-field>  
+          <button v-on:click.prevent="writePlan" class="btn btn-success elevation-9">Set Plan</button>
         </div>
         <div class="row">
             <br>
@@ -14,7 +10,6 @@
             <thead>
             <tr>
                 <th>To Do</th>
-                <th>Deadline</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -27,16 +22,14 @@
                         {{ todo.task }}
                     </td>
                     <td>
-                        {{ todo.deadline }}
-                    </td>
-                    <td>
-                        <button v-on:click.prevent="updatePlan" :data-id="todo._id">Done</button>
-                        <button v-on:click.prevent="deletePlan" :data-id="todo._id">Delete</button>
+                        <button v-on:click.prevent="updatePlan" :data-id="todo._id" class="btn btn-info elevation-9">Done</button>
+                        <button v-on:click.prevent="deletePlan" :data-id="todo._id" class="btn btn-warning elevation-9">Delete</button>
                     </td>
                 </tr>
             </tbody>
             </table>
         </div>
+
     </div>
 </template>
 
@@ -44,19 +37,27 @@
 import axios from 'axios'
 import swal from 'sweetalert'
 
+const vhttp = 'http://localhost:3000/'
+// const vhttp = 'https://todoserver-yasirjs-com.herokuapp.com/'
+
 export default {
+  
   name: 'Todo',
   data () {
     return {
-      plan: '',
-      deadline: '',
-      todos: null
+      headers: [
+        {text:"Todo Item", value:"value"},
+        {text:"Action"}
+      ],
+      // search:null,
+      plan:null,
+      todos:null,
+
     }
   },
   methods: {
     getTodo: function () {
-      let url = 'http://localhost:3000/users/showtodo'
-      // let url = 'https://todoserver-yasirjs-com.herokuapp.com/users/showtodo'
+      let url = `${vhttp}users/showtodo`
 
       axios
         .get(url, {
@@ -73,39 +74,48 @@ export default {
         })
     },
     writePlan: function () {
-      let url = 'http://localhost:3000/users/inputtodo'
-      // let url = 'https://todoserver-yasirjs-com.herokuapp.com/users/inputtodo'
 
-      let newTodo = {
-        task: this.plan,
-        deadline: this.deadline
-      }
-      axios
-        .post(url, newTodo, {
-          headers: {
-            token: localStorage.getItem('token')
-          }
+      if(this.plan === null) {
+        swal({
+          icon: 'error',
+          title: 'Oops',
+          text: 'plan todo harus diisi...'
         })
-        .then(response => {
-          console.log(response)
-          // swal('add Todo', 'you add Todo Successfully', 'success')
-          this.todos.push(response.data.data)
-        })
-        .catch(error => {
-          console.log(error)
-          swal({
-            icon: 'error',
-            title: 'Hhhmmm',
-            text: 'Something wrong...'
+      } else {
+        let url = `${vhttp}users/inputtodo`
+  
+        let newTodo = {
+          task: this.plan,
+          deadline: this.deadline
+        }
+        axios
+          .post(url, newTodo, {
+            headers: {
+              token: localStorage.getItem('token')
+            }
           })
-        })
+          .then(response => {
+            // console.log(response)
+            // swal('add Todo', 'you add Todo Successfully', 'success')
+            this.todos.push(response.data.data)
+  
+          })
+          .catch(error => {
+            console.log(error)
+            swal({
+              icon: 'error',
+              title: 'Hhhmmm',
+              text: 'Something wrong...'
+            })
+          })
+      }
     },
     updatePlan: function (event) {
       // console.log('update')
       let id = event.srcElement.dataset.id
       // console.log(id)
-      let url = `http://localhost:3000/users/update/${id}`
-      // let url = `https://todoserver-yasirjs-com.herokuapp.com/users/update/${id}`
+      let url = `${vhttp}users/update/${id}`
+
       let newStatus = {
         completed: true
       }
@@ -132,8 +142,8 @@ export default {
     },
     deletePlan: function (event) {
       let id = event.srcElement.dataset.id
-      let url = `http://localhost:3000/users/delete/${id}`
-      // let url = `https://todoserver-yasirjs-com.herokuapp.com/users/delete/${id}`
+      let url = `${vhttp}users/delete/${id}`
+
       axios
         .delete(url, {
           headers: {
