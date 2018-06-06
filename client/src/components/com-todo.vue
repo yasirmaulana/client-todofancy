@@ -37,8 +37,9 @@
 import axios from 'axios'
 import swal from 'sweetalert'
 
-const vhttp = 'http://localhost:3000/'
+// const vhttp = 'http://localhost:3000/'
 // const vhttp = 'https://todoserver-yasirjs-com.herokuapp.com/'
+const vhttp = 'https://todoserver.yasirjs.com/'
 
 export default {
   

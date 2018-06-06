@@ -21,8 +21,9 @@ import swal from 'sweetalert'
 import axios from 'axios'
 import firebase from 'firebase';
 
-const vhttp = 'http://localhost:3000/'
+// const vhttp = 'http://localhost:3000/'
 // const vhttp = 'https://todoserver-yasirjs-com.herokuapp.com/'
+const vhttp = 'https://todoserver.yasirjs.com/'
 
 export default {
   name: 'Signup',

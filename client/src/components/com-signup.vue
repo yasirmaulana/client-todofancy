@@ -14,8 +14,9 @@ import swal from 'sweetalert'
 import axios from 'axios'
 import cLoginMedsos from './com-loginMedsos.vue'
 
-const vhttp = 'http://localhost:3000/'
+// const vhttp = 'http://localhost:3000/'
 // const vhttp = 'https://todoserver-yasirjs-com.herokuapp.com/'
+const vhttp = 'https://todoserver.yasirjs.com/'
 
 export default {
   data () {
